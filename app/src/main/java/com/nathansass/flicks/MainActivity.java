@@ -2,7 +2,6 @@ package com.nathansass.flicks;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.ListView;
 
 import com.loopj.android.http.AsyncHttpClient;
@@ -46,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
                     movieJsonResults = response.getJSONArray("results");
                     movies.addAll( Movie.fromJSONArray(movieJsonResults) );
                     movieAdapter.notifyDataSetChanged();
-                    Log.d("DEBUG", movies.toString());
 
                 } catch (JSONException e) {
                     e.printStackTrace();
