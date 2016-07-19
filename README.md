@@ -6,7 +6,7 @@
 
 * [x] User can view a list of movies (title, poster image, and overview) currently playing in theaters from the Movie Database API.
 * [x] Lists should be fully optimized for performance with the ViewHolder pattern.
-* [] Views should be responsive for both landscape/portrait mode.
+* [ ] Views should be responsive for both landscape/portrait mode.
 
 ## Notes
 
