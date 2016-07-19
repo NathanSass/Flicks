@@ -1,0 +1,29 @@
+# Flicks
+
+**Flicks** is a movie listing app.
+
+## Stories
+
+* [x] User can view a list of movies (title, poster image, and overview) currently playing in theaters from the Movie Database API.
+* [x] Lists should be fully optimized for performance with the ViewHolder pattern.
+* [] Views should be responsive for both landscape/portrait mode.
+
+## Notes
+
+- wip
+
+## License
+
+    Copyright 2016 Nathan Sass
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
