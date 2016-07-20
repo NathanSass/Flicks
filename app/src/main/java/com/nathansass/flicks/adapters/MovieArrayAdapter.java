@@ -45,11 +45,11 @@ public class MovieArrayAdapter extends ArrayAdapter<Movie> {
         ViewHolder viewHolder;
 
         if (convertView == null) {
-            viewHolder = new ViewHolder(convertView);
 
             LayoutInflater inflater = LayoutInflater.from(getContext());
-            convertView = inflater.inflate(R.layout.item_movie, parent,false);
+            convertView = inflater.inflate(R.layout.item_movie, parent, false);
 
+            viewHolder = new ViewHolder(convertView);
             convertView.setTag(viewHolder);
 
         } else {
