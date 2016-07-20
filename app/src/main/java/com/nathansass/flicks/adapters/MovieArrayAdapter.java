@@ -15,17 +15,22 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * Created by nathansass on 7/18/16.
  */
 public class MovieArrayAdapter extends ArrayAdapter<Movie> {
 
-//    @BindView(R.id.ivMovieImage) ImageView ivImage;
-
     public static class ViewHolder {
-        TextView tvTitle;
-        TextView tvOverview;
-        ImageView ivImage;
+        @BindView(R.id.tvTitle) TextView tvTitle;
+        @BindView(R.id.tvOverview) TextView tvOverview;
+        @BindView(R.id.ivMovieImage) ImageView ivImage;
+
+        public ViewHolder (View view) {
+            ButterKnife.bind(this, view);
+        }
     }
 
     public MovieArrayAdapter(Context context, List<Movie> movies) {
@@ -40,23 +45,16 @@ public class MovieArrayAdapter extends ArrayAdapter<Movie> {
         ViewHolder viewHolder;
 
         if (convertView == null) {
-            viewHolder = new ViewHolder();
+            viewHolder = new ViewHolder(convertView);
 
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.item_movie, parent,false);
-
-            viewHolder.tvTitle = (TextView) convertView.findViewById(R.id.tvTitle);
-            viewHolder.tvOverview = (TextView) convertView.findViewById(R.id.tvOverview);
-            viewHolder.ivImage = (ImageView) convertView.findViewById(R.id.ivMovieImage);
-            viewHolder.ivImage.setImageResource(0);
 
             convertView.setTag(viewHolder);
 
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-
-
 
         String movieImage = "";
         int movieImagePlaceholder = 0;
