@@ -41,16 +41,21 @@ public class MovieArrayAdapter extends ArrayAdapter<Movie> {
         TextView tvOverview = (TextView) convertView.findViewById(R.id.tvOverview);
 
         String movieImage = "";
+        int movieImagePlaceholder = 0;
 
         int orientation = getContext().getResources().getConfiguration().orientation;
 
         if (orientation == Configuration.ORIENTATION_PORTRAIT) {
             movieImage = movie.getPosterPath();
+            movieImagePlaceholder = R.drawable.item_movie_p;
         } else if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
             movieImage = movie.getBackdropPath();
+            movieImagePlaceholder = R.drawable.item_movie_l;
         }
 
-        Picasso.with(getContext()).load(movieImage).into(ivImage);
+        Picasso.with(getContext()).load(movieImage).fit()
+                .placeholder(movieImagePlaceholder)
+                .into(ivImage);
 
         tvTitle.setText(movie.getOriginalTitle());
         tvOverview.setText(movie.getOverview());
