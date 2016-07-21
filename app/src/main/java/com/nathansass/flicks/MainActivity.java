@@ -1,50 +1,52 @@
 package com.nathansass.flicks;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.JsonHttpResponseHandler;
 import com.nathansass.flicks.adapters.MovieArrayAdapter;
+import com.nathansass.flicks.interfaces.GetMoviesCallback;
 import com.nathansass.flicks.models.Movie;
+import com.nathansass.flicks.models.Movies;
 
 import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.util.ArrayList;
-
-import cz.msebera.android.httpclient.Header;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
-    ArrayList<Movie> movies;
+//    ArrayList<Movie> movies;
+    Movies movies;
     MovieArrayAdapter movieAdapter;
-    ListView lvItems;
-    private SwipeRefreshLayout swipeContainer;
+    Context context;
 
+    @BindView(R.id.lvMovies) ListView lvItems;
+    @BindView(R.id.swipeContainer) SwipeRefreshLayout swipeContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
 
-        swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
+        context = this;
 
-
-        lvItems = (ListView) findViewById(R.id.lvMovies);
-        movies = new ArrayList<>();
-        movieAdapter = new MovieArrayAdapter(this, movies);
+        movies = Movies.get();
+        movieAdapter = new MovieArrayAdapter(this, Movies.get().getMovies());
         lvItems.setAdapter(movieAdapter);
 
-        fetchMovieAsync();
+        fetchMoviesAsync();
 
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                fetchMovieAsync();
+                fetchMoviesAsync();
             }
         });
 
@@ -52,37 +54,28 @@ public class MainActivity extends AppCompatActivity {
                 android.R.color.holo_green_light,
                 android.R.color.holo_orange_light,
                 android.R.color.holo_red_light);
-    }
 
-    public void fetchMovieAsync() {
-
-        String url = "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed";
-
-        AsyncHttpClient client = new AsyncHttpClient();
-
-        client.get(url, new JsonHttpResponseHandler() {
+        lvItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                JSONArray movieJsonResults = null;
-                try {
-                    movieAdapter.clear();
-                    movieJsonResults = response.getJSONArray("results");
-                    movies.addAll( Movie.fromJSONArray(movieJsonResults) );
-                    movieAdapter.notifyDataSetChanged();
-
-                    swipeContainer.setRefreshing(false);
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                super.onFailure(statusCode, headers, throwable, errorResponse);
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(context, "You win!", Toast.LENGTH_SHORT).show();
             }
         });
-
     }
+
+    public void fetchMoviesAsync() {
+        Movies.get().fetchMoviesAsync(new GetMoviesCallback() {
+            @Override
+            public void done(JSONArray movieJsonResults) {
+                movieAdapter.clear();
+
+                Movies.get().getMovies().addAll( Movie.fromJSONArray(movieJsonResults) );
+
+                movieAdapter.notifyDataSetChanged();
+
+                swipeContainer.setRefreshing(false);
+            }
+        });
+    }
+
 }
