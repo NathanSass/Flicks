@@ -1,14 +1,15 @@
 package com.nathansass.flicks;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
+import com.nathansass.flicks.activites.MovieDetail;
 import com.nathansass.flicks.adapters.MovieArrayAdapter;
 import com.nathansass.flicks.interfaces.GetMoviesCallback;
 import com.nathansass.flicks.models.Movie;
@@ -18,10 +19,10 @@ import org.json.JSONArray;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnItemClick;
 
 public class MainActivity extends AppCompatActivity {
 
-//    ArrayList<Movie> movies;
     Movies movies;
     MovieArrayAdapter movieAdapter;
     Context context;
@@ -54,13 +55,14 @@ public class MainActivity extends AppCompatActivity {
                 android.R.color.holo_green_light,
                 android.R.color.holo_orange_light,
                 android.R.color.holo_red_light);
+    }
 
-        lvItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(context, "You win!", Toast.LENGTH_SHORT).show();
-            }
-        });
+
+    @OnItemClick(R.id.lvMovies)
+    public void movieItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent i = new Intent(MainActivity.this, MovieDetail.class);
+        i.putExtra("position", position);
+        startActivity(i);
     }
 
     public void fetchMoviesAsync() {

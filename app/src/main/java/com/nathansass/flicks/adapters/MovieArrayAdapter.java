@@ -2,11 +2,14 @@ package com.nathansass.flicks.adapters;
 
 import android.content.Context;
 import android.content.res.Configuration;
+import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.nathansass.flicks.R;
@@ -24,17 +27,39 @@ import butterknife.ButterKnife;
 public class MovieArrayAdapter extends ArrayAdapter<Movie> {
 
     public static class ViewHolder {
-        @BindView(R.id.tvTitle) TextView tvTitle;
-        @BindView(R.id.tvOverview) TextView tvOverview;
-        @BindView(R.id.ivMovieImage) ImageView ivImage;
 
+        @Nullable @BindView(R.id.tvTitle)
+        TextView tvTitle;
+        @Nullable @BindView(R.id.tvOverview)
+        TextView tvOverview;
+        @Nullable @BindView(R.id.ivMovieImage)
+        ImageView ivImage;
+        @Nullable @BindView(R.id.ratingBar)
+        RatingBar ratingBar;
         public ViewHolder (View view) {
             ButterKnife.bind(this, view);
         }
-    }
 
+    }
     public MovieArrayAdapter(Context context, List<Movie> movies) {
         super(context, android.R.layout.simple_list_item_1, movies);
+    }
+
+    @Override
+    public int getItemViewType(int position) { // how does it know the order
+        Movie movie = getItem(position);
+        int popularity = movie.getPopularity();
+
+        if (popularity >= 13) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
+    @Override
+    public int getViewTypeCount() {
+        return 2;
     }
 
     @Override
@@ -44,10 +69,11 @@ public class MovieArrayAdapter extends ArrayAdapter<Movie> {
 
         ViewHolder viewHolder;
 
+        int moviePopularity = movie.getPopularity();
+        Log.v("DEBUG", "popularity: " + moviePopularity);
         if (convertView == null) {
 
-            LayoutInflater inflater = LayoutInflater.from(getContext());
-            convertView = inflater.inflate(R.layout.item_movie, parent, false);
+            convertView = getInflatedLayoutForPopularity(moviePopularity);
 
             viewHolder = new ViewHolder(convertView);
             convertView.setTag(viewHolder);
@@ -61,10 +87,10 @@ public class MovieArrayAdapter extends ArrayAdapter<Movie> {
 
         int orientation = getContext().getResources().getConfiguration().orientation;
 
-        if (orientation == Configuration.ORIENTATION_PORTRAIT) {
+        if (orientation == Configuration.ORIENTATION_PORTRAIT && moviePopularity < 13) {
             movieImage = movie.getPosterPath();
             movieImagePlaceholder = R.drawable.item_movie_p;
-        } else if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+        } else { // if (orientation == Configuration.ORIENTATION_LANDSCAPE || moviePopularity >= 13
             movieImage = movie.getBackdropPath();
             movieImagePlaceholder = R.drawable.item_movie_l;
         }
@@ -73,9 +99,22 @@ public class MovieArrayAdapter extends ArrayAdapter<Movie> {
                 .placeholder(movieImagePlaceholder)
                 .into(viewHolder.ivImage);
 
-        viewHolder.tvTitle.setText(movie.getOriginalTitle());
-        viewHolder.tvOverview.setText(movie.getOverview());
+        if (viewHolder.tvTitle != null) { // what is the best way to do checks for each of these
+
+            viewHolder.tvTitle.setText(movie.getOriginalTitle());
+            viewHolder.ratingBar.setRating(movie.getRating());
+            viewHolder.tvOverview.setText(movie.getOverview());
+        }
 
         return convertView;
+    }
+
+    private View getInflatedLayoutForPopularity(int popularity) {
+
+        if (popularity >= 13) {
+            return LayoutInflater.from(getContext()).inflate(R.layout.item_movie_preview, null);
+        } else {
+            return LayoutInflater.from(getContext()).inflate(R.layout.item_movie, null);
+        }
     }
 }
