@@ -30,10 +30,19 @@
         android:layout_width="match_parent"
         android:layout_below="@+id/toolbar"
         android:layout_height="220dp">
+
         <com.nathansass.flicks.widgets.AspectRatioImageView
+            android:id="@+id/ivMovieImage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/item_movie_l"/>
+
+        <com.nathansass.flicks.widgets.AspectRatioImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/play_overlay"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"/>
     </RelativeLayout>
     <RelativeLayout
         android:layout_below="@id/imageContainer"
@@ -52,10 +61,6 @@
             android:rating="3.5"
             android:layout_centerHorizontal="true"
             android:layout_alignParentTop="true"/>
-        <com.google.android.youtube.player.YouTubePlayerView
-            android:id="@+id/player"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
     </RelativeLayout>
 
 
