@@ -29,7 +29,8 @@ public class SuperMovies {
     }
 
     public void fetchMoviesAsync(final GetMoviesCallback callback) {
-        String url = "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed";
+        String url = "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&append_to_response=trailer";
+//        https://api.themoviedb.org/3/movie/550?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&append_to_response=releases,trailers
 
         AsyncHttpClient client = new AsyncHttpClient();
 
