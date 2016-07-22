@@ -52,6 +52,10 @@
             android:rating="3.5"
             android:layout_centerHorizontal="true"
             android:layout_alignParentTop="true"/>
+        <com.google.android.youtube.player.YouTubePlayerView
+            android:id="@+id/player"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
     </RelativeLayout>
 
 

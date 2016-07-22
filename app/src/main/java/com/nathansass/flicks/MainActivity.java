@@ -60,9 +60,14 @@ public class MainActivity extends AppCompatActivity {
 
     @OnItemClick(R.id.lvMovies)
     public void movieItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Intent i = new Intent(MainActivity.this, MovieDetail.class);
-        i.putExtra("position", position);
-        startActivity(i);
+        Movie movie = Movies.get().getMovies().get(position);
+//        if (movie.getPopularity() >= 13) {
+//            // launch youtube player
+//        } else {
+            Intent i = new Intent(MainActivity.this, MovieDetail.class);
+            i.putExtra("position", position);
+            startActivity(i);
+//        }
     }
 
     public void fetchMoviesAsync() {

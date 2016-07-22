@@ -3,7 +3,6 @@ package com.nathansass.flicks.adapters;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -70,7 +69,6 @@ public class MovieArrayAdapter extends ArrayAdapter<Movie> {
         ViewHolder viewHolder;
 
         int moviePopularity = movie.getPopularity();
-        Log.v("DEBUG", "popularity: " + moviePopularity);
         if (convertView == null) {
 
             convertView = getInflatedLayoutForPopularity(moviePopularity);
