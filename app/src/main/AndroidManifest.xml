@@ -20,6 +20,10 @@
         </activity>
         <activity android:name=".activites.MovieDetail">
         </activity>
+        <activity android:name=".activites.YoutubePlayer"
+                  android:screenOrientation="landscape"
+                  android:configChanges="orientation|screenSize">
+        </activity>
     </application>
 
 </manifest>

@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.nathansass.flicks.activites.MovieDetail;
+import com.nathansass.flicks.activites.YoutubePlayer;
 import com.nathansass.flicks.adapters.MovieArrayAdapter;
 import com.nathansass.flicks.interfaces.GetMoviesCallback;
 import com.nathansass.flicks.models.Movie;
@@ -61,13 +62,21 @@ public class MainActivity extends AppCompatActivity {
     @OnItemClick(R.id.lvMovies)
     public void movieItemClick(AdapterView<?> parent, View view, int position, long id) {
         Movie movie = Movies.get().getMovies().get(position);
-//        if (movie.getPopularity() >= 13) {
-//            // launch youtube player
-//        } else {
+
+        if (movie.getPopularity() >= 13) {
+
+            Intent i = new Intent(MainActivity.this, YoutubePlayer.class);
+            i.putExtra("position", position);
+            startActivity(i);
+
+        } else {
+
             Intent i = new Intent(MainActivity.this, MovieDetail.class);
             i.putExtra("position", position);
             startActivity(i);
-//        }
+
+        }
+
     }
 
     public void fetchMoviesAsync() {
