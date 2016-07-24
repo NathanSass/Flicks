@@ -21,13 +21,15 @@ public class MovieDetail extends Activity {
     Movie movie;
     Context context;
 
-
     int position;
 
     @BindView(R.id.ivMovieImage)
     ImageView movieImage;
-    @BindView(R.id.toolbar_title)
-    TextView toolbarTitle;
+    @BindView(R.id.tvTitle)
+    TextView tvTitle;
+
+    @BindView(R.id.tvOverview)
+    TextView tvOverview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +51,9 @@ public class MovieDetail extends Activity {
         Picasso.with(context).load(movie.getBackdropPath()).fit()
                 .into(movieImage);
 
-        toolbarTitle.setText( movie.getOriginalTitle() );
+        tvTitle.setText( movie.getOriginalTitle() );
+
+        tvOverview.setText( movie.getOverview() );
     }
 
     @OnClick(R.id.ivMovieImage)
