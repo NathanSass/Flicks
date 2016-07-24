@@ -23,6 +23,7 @@
         android:layout_marginLeft="50dp"
         android:background="@drawable/movie_item_gradient_side">
     </View>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -36,8 +37,8 @@
             tools:text="Empire of the Sun"
             android:id="@+id/tvTitle"
             android:layout_alignParentTop="true"
-            android:textColor="#FFFFFF"
-            />
+            android:textColor="@color/textPrimary"
+            android:fontFamily="sans-serif-light"/>
         <RatingBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -58,8 +59,9 @@
             android:layout_below="@id/ratingBar"
             android:maxLines="8"
             android:ellipsize="end"
-            android:textColor="#818181"
-            android:textSize="12dp"/>
+            android:textColor="@color/textSecondary"
+            android:textSize="12dp"
+            android:fontFamily="sans-serif-light"/>
     </RelativeLayout>
 
 </RelativeLayout>
