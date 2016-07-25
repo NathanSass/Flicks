@@ -1,9 +1,9 @@
 package com.nathansass.flicks.activites;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,7 +16,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MovieDetail extends Activity {
+public class MovieDetail extends AppCompatActivity {
+
+    private MovieDetail_ViewBinding binding;
 
     Movie movie;
     Context context;
@@ -35,6 +37,7 @@ public class MovieDetail extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_detail);
+//        binding = DataBindingUtil.setContentView(this, R.layout.activity_movie_detail);
 
         ButterKnife.bind(this);
 

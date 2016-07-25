@@ -1,84 +1,86 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".activites.MovieDetail">
-
-
+<!--<layout xmlns:android="http://schemas.android.com/apk/res/android"-->
+        <!--xmlns:tools="http://schemas.android.com/tools">-->
+    <!--<data>-->
+        <!--<variable name="movie" type="com.nathansass.flicks.models.Movie"/>-->
+    <!--</data>-->
     <RelativeLayout
-        android:id="@+id/imageContainer"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_height="220dp">
+        android:layout_height="match_parent"
+        tools:context=".activites.MovieDetail">
 
-        <ImageView
-            android:id="@+id/ivMovieImage"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/item_movie_l"/>
-
-        <com.nathansass.flicks.widgets.AspectRatioImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/play_overlay"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"/>
-    </RelativeLayout>
-    <RelativeLayout
-        android:layout_below="@id/imageContainer"
-        android:background="@drawable/movie_gradient_bottom"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
         <RelativeLayout
+            android:id="@+id/imageContainer"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:layout_marginBottom="@dimen/activity_vertical_margin">
+            android:layout_alignParentTop="true"
+            android:layout_height="220dp">
 
-            <TextView
-                android:id="@+id/tvTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tarzan: The next episodesss"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@color/textPrimary"
-                android:fontFamily="sans-serif-light"
-                android:layout_gravity="left"
-                />
+            <ImageView
+                android:id="@+id/ivMovieImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/item_movie_l"/>
 
-            <RatingBar
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="?android:attr/ratingBarStyleSmall"
-                android:id="@+id/ratingBar"
-                android:isIndicator="true"
-                android:numStars="10"
-                android:stepSize="0.5"
+            <com.nathansass.flicks.widgets.AspectRatioImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/play_overlay"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_below="@id/imageContainer"
+            android:background="@drawable/movie_gradient_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:layout_marginBottom="@dimen/activity_vertical_margin"
-                android:rating="3.5"
-                android:layout_below="@+id/tvTitle"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"/>
+                android:layout_marginBottom="@dimen/activity_vertical_margin">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="We always knew they were coming back. Using recovered alien technology, the nations of Earth have collaborated on an immense defense program to protect the planet. But nothing can prepare us for the aliens’ advanced and unprecedented force. Only the ingenuity of a few brave men and women can bring our world back from the brink of extinction."
-                android:id="@+id/tvOverview"
-                android:fontFamily="sans-serif-light"
-                android:layout_below="@id/ratingBar"
-                android:textColor="@color/textSecondary"/>
+                <TextView
+                    android:id="@+id/tvTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tarzan the next episode"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/textPrimary"
+                    android:fontFamily="sans-serif-light"
+                    android:layout_gravity="left"
+                    />
+
+                <RatingBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="?android:attr/ratingBarStyleSmall"
+                    android:id="@+id/ratingBar"
+                    android:isIndicator="true"
+                    android:numStars="10"
+                    android:stepSize="0.5"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:layout_marginBottom="@dimen/activity_vertical_margin"
+                    android:rating="3.5"
+                    android:layout_below="@+id/tvTitle"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="We always knew they were coming back. Using recovered alien technology, the nations of Earth have collaborated on an immense defense program to protect the planet. But nothing can prepare us for the aliens’ advanced and unprecedented force. Only the ingenuity of a few brave men and women can bring our world back from the brink of extinction."
+                    android:id="@+id/tvOverview"
+                    android:fontFamily="sans-serif-light"
+                    android:layout_below="@id/ratingBar"
+                    android:textColor="@color/textSecondary"/>
+            </RelativeLayout>
+
         </RelativeLayout>
 
     </RelativeLayout>
-
-
-
-
-</RelativeLayout>
+<!--</layout>-->

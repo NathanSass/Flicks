@@ -18,7 +18,7 @@ The following **optional** features are implemented:
 
 * [x] User can **pull-to-refresh** popular stream to get the latest movies.
 * [x] Display a nice default [placeholder graphic](http://guides.codepath.com/android/Displaying-Images-with-the-Picasso-Library#configuring-picasso) for each image during loading.
-* [ ] Improved the user interface through styling and coloring.
+* [x] Improved the user interface through styling and coloring.
 
 The following **bonus** features are implemented:
 
@@ -42,6 +42,7 @@ Here's a walkthrough of implemented user stories:
 
 <img src='http://i.giphy.com/3o6ZtpE4UigGRUCZoc.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 <img src='http://i.giphy.com/l0HlANAmjZNjQ4kpy.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://i.giphy.com/26BRwFMNcRmM02Vd6.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
