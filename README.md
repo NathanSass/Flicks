@@ -42,7 +42,7 @@ Here's a walkthrough of implemented user stories:
 
 <img src='http://i.giphy.com/3o6ZtpE4UigGRUCZoc.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 <img src='http://i.giphy.com/l0HlANAmjZNjQ4kpy.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-<img src='http://i.giphy.com/26BRwFMNcRmM02Vd6.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://i.giphy.com/26BRD9Hsv7aR68kxO.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
