@@ -6,7 +6,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".activites.MovieDetail">
+        tools:context=".activities.MovieDetailActivity">
 
 
         <RelativeLayout
@@ -46,7 +46,7 @@
                     android:id="@+id/tvTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tarzan the next episode"
+                    android:text='@{movie.originalTitle}'
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@color/textPrimary"
                     android:fontFamily="sans-serif-light"

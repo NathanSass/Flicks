@@ -1,4 +1,4 @@
-package com.nathansass.flicks.activites;
+package com.nathansass.flicks.activities;
 
 import android.content.Context;
 import android.content.pm.ActivityInfo;

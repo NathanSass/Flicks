@@ -9,8 +9,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.nathansass.flicks.activites.MovieDetail;
-import com.nathansass.flicks.activites.YoutubePlayer;
+import com.nathansass.flicks.activities.MovieDetailActivity;
+import com.nathansass.flicks.activities.YoutubePlayer;
 import com.nathansass.flicks.adapters.MovieArrayAdapter;
 import com.nathansass.flicks.interfaces.GetMoviesCallback;
 import com.nathansass.flicks.models.Movie;
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
         } else {
 
-            Intent i = new Intent(MainActivity.this, MovieDetail.class);
+            Intent i = new Intent(MainActivity.this, MovieDetailActivity.class);
             i.putExtra("position", position);
             startActivity(i);
 
