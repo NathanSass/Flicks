@@ -18,9 +18,9 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activites.MovieDetail">
+        <activity android:name=".activities.MovieDetailActivity">
         </activity>
-        <activity android:name=".activites.YoutubePlayer"
+        <activity android:name=".activities.YoutubePlayer"
                   android:screenOrientation="landscape"
                   android:configChanges="orientation|screenSize">
         </activity>
