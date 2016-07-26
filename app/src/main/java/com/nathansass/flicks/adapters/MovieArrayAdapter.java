@@ -36,6 +36,8 @@ public class MovieArrayAdapter extends ArrayAdapter<Movie> {
         ImageView ivImage;
         @Nullable @BindView(R.id.ratingBar)
         RatingBar ratingBar;
+        @Nullable @BindView(R.id.bgGradient)
+        View bgGradient;
         public ViewHolder (View view) {
             ButterKnife.bind(this, view);
         }
@@ -67,12 +69,12 @@ public class MovieArrayAdapter extends ArrayAdapter<Movie> {
         Movie movie = getItem(position);
 
 
-        ViewHolder viewHolder;
+        final ViewHolder viewHolder;
 
         int moviePopularity = movie.getPopularity();
         if (convertView == null) {
 
-            convertView = getInflatedLayoutForPopularity(moviePopularity);
+            convertView = getInflatedLayoutForPopularity(moviePopularity, parent);
 
             viewHolder = new ViewHolder(convertView);
             convertView.setTag(viewHolder);
@@ -97,7 +99,21 @@ public class MovieArrayAdapter extends ArrayAdapter<Movie> {
         Picasso.with(getContext()).load(movieImage).fit()
                 .transform(new RoundedCornersTransformation(2,2))
                 .placeholder(movieImagePlaceholder)
-                .into(viewHolder.ivImage);
+                .into(viewHolder.ivImage, new com.squareup.picasso.Callback() {
+                    @Override
+                    public void onSuccess() {
+                        if (viewHolder.bgGradient != null) {
+                            viewHolder.bgGradient.getLayoutParams().height = viewHolder.ivImage.getMeasuredHeight();
+//                            viewHolder.bgGradient.invalidate();
+//                            viewHolder.bgGradient.requestLayout();
+                        }
+                    }
+
+                    @Override
+                    public void onError() {
+
+                    }
+                });
 
         if (viewHolder.tvTitle != null) { // what is the best way to do checks for each of these
 
@@ -109,12 +125,12 @@ public class MovieArrayAdapter extends ArrayAdapter<Movie> {
         return convertView;
     }
 
-    private View getInflatedLayoutForPopularity(int popularity) {
+    private View getInflatedLayoutForPopularity(int popularity, ViewGroup parent) {
 
         if (popularity >= 13) {
-            return LayoutInflater.from(getContext()).inflate(R.layout.item_movie_preview, null);
+            return LayoutInflater.from(getContext()).inflate(R.layout.item_movie_preview, parent, false);
         } else {
-            return LayoutInflater.from(getContext()).inflate(R.layout.item_movie, null);
+            return LayoutInflater.from(getContext()).inflate(R.layout.item_movie, parent, false);
         }
     }
 }
